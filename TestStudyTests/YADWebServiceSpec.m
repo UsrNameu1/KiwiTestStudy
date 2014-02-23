@@ -27,7 +27,7 @@ describe(@"指定URLからレスポンスを取得", ^{
         
         beforeAll(^{
             object = @{@"id" : @(12345),
-                           @"name" : @"mock"};
+                       @"name" : @"mock"};
             NSData *data = [NSJSONSerialization dataWithJSONObject:object
                                                            options:NSJSONWritingPrettyPrinted
                                                              error:nil];

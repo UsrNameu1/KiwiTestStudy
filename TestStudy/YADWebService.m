@@ -35,8 +35,6 @@
                                            error:&parseError];
          
          if (responceObject) {
-             
-             // 別の罠、この中でハンドラをコールするとKiwiのテストが呼ばれない?
              dispatch_async(dispatch_get_main_queue(), ^{
                  handler(responceObject, nil);
              });
