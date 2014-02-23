@@ -7,6 +7,7 @@
 //
 
 #import "YADViewController.h"
+#import "YADWebService.h"
 
 @interface YADViewController ()
 
