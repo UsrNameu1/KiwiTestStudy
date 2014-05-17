@@ -41,11 +41,16 @@ describe(@"指定URLからレスポンスを取得", ^{
         });
         
         it(@"responceObjectに値を格納して正常な値を返す", ^{
+            //完了フラグを最終的に判断してテストパスが非同期であっても必ず通るようにします。
+            __block BOOL executed = NO;
             [webService fetchDataWithCompletion:^(NSDictionary *response, NSError *error) {
                 [[response should] beNonNil];
                 [[response[@"id"] should] equal:object[@"id"]];
                 [[response[@"name"] should] equal:object[@"name"]];
+                executed = YES;
             }];
+            //exedutedがYesになるまで処理を待ちます。
+            [[expectFutureValue(theValue(executed)) shouldEventually] beYes];
         });
     });
 });
